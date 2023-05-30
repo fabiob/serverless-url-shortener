@@ -84,6 +84,8 @@ class LinkShorteningStack(cdk.Stack):
             domain_name=dist.distribution_domain_name,
         )
 
+        cdk.CfnOutput(self, "BucketName", value=bucket.bucket_name)
+
     def link_function_code(self, bucket: s3.Bucket):
         """
         Lambda@Edge does not support environment variables, so we hack them
